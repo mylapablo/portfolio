@@ -54,8 +54,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe sections
-document.querySelectorAll('section').forEach(section => {
+// Observe sections (but NOT the home section to avoid animation conflicts)
+document.querySelectorAll('section:not(#home)').forEach(section => {
   section.style.opacity = '0';
   section.style.transform = 'translateY(50px)';
   section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -90,4 +90,76 @@ document.addEventListener('mousemove', (e) => {
     glow.style.opacity = '0';
     setTimeout(() => glow.remove(), 500);
   }, 100);
+});
+
+// See More Button Functionality for Other Projects
+document.addEventListener('DOMContentLoaded', () => {
+  const seeMoreBtn = document.querySelector('.see-more-btn');
+  const projectCards = document.querySelectorAll('.other-project-card');
+  const initialDisplay = 6; // Show 6 projects initially (2 rows of 3)
+  
+  if (seeMoreBtn && projectCards.length > 0) {
+    // Hide projects beyond the initial display count
+    projectCards.forEach((card, index) => {
+      if (index >= initialDisplay) {
+        card.classList.add('hidden');
+      }
+    });
+    
+    // If there are 6 or fewer projects, hide the See More button
+    if (projectCards.length <= initialDisplay) {
+      seeMoreBtn.classList.add('hidden');
+    }
+    
+    // Toggle visibility when button is clicked
+    seeMoreBtn.addEventListener('click', () => {
+      const hiddenCards = document.querySelectorAll('.other-project-card.hidden');
+      
+      if (hiddenCards.length > 0) {
+        // Show all hidden cards
+        hiddenCards.forEach(card => {
+          card.classList.remove('hidden');
+        });
+        seeMoreBtn.textContent = 'Show Less';
+      } else {
+        // Hide cards beyond initial display
+        projectCards.forEach((card, index) => {
+          if (index >= initialDisplay) {
+            card.classList.add('hidden');
+          }
+        });
+        seeMoreBtn.textContent = 'See More';
+        
+        // Smooth scroll to the "Other Projects" section
+        document.querySelector('#other-projects h2').scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+    });
+  }
+});
+// Typing animation
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const subtitle = document.querySelector('.big-subheading');
+    const text = subtitle.textContent;
+    subtitle.textContent = '';
+    
+    let index = 0;
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+  
+    subtitle.appendChild(cursor);
+    
+    function type() {
+      if (index < text.length) {
+        subtitle.insertBefore(document.createTextNode(text.charAt(index)), cursor);
+        index++;
+        setTimeout(type, 50); // Speed of typing
+      }
+    }
+    
+    type();
+  }, 2500);
 });
