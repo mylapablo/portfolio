@@ -19,10 +19,10 @@ My personal portfolio website showcasing my work as a **Full-Stack Developer** &
 
 ## 🛠️ Built With
 
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with Flexbox/Grid
-- **JavaScript** - Interactive functionality
-- **GitHub Pages** - Hosting and deployment
+- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) - Semantic markup
+- **![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)** - Modern styling with Flexbox/Grid
+- **![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)** - Interactive functionality
+- **![Githuh](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)** - Hosting and deployment
 
 ---
 
