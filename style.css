@@ -278,6 +278,8 @@ section {
   text-decoration: none;
   transition: all 0.25s;
   box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+  width: 180px;
+  text-align: center;
 }
 
 .email-link:hover {
@@ -1088,3 +1090,4 @@ footer a:hover {
     font-size: clamp(28px, 12vw, 50px);
   }
 }
+
